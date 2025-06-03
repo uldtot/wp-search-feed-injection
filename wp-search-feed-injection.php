@@ -8,6 +8,11 @@
 
 if (!defined('ABSPATH')) exit;
 
+
+
+
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 class WPSearchFeedInjection {
 
     public function __construct() {
@@ -33,6 +38,20 @@ class WPSearchFeedInjection {
                 update_post_meta($post_id, 'external_url', sanitize_text_field($_POST['wsfi_external_url']));
             }
         });
+
+
+        // Autoload GitHub update checker
+        require plugin_dir_path(__FILE__) . 'plugin-update-checker/plugin-update-checker.php';
+
+        // Initialiser update checker
+        $myUpdateChecker = PucFactory::buildUpdateChecker(
+            'https://github.com/uldtot/wp-search-feed-injection/',
+            __FILE__,
+            'wp-search-feed-injection'
+        );
+
+        // Sæt branch-navn og evt. adgangstoken (hvis privat repo)
+        $myUpdateChecker->setBranch('main');
 
 
 
