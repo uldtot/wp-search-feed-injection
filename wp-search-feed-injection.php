@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Search Feed Injection
  * Description: Injektér eksterne XML-feeds som CPT og vis dem i søgning.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Kim Vinberg
  */
 
